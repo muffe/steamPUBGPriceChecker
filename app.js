@@ -12,6 +12,8 @@ const requestHandler = (request, response) => {
 
 const server = http.createServer(requestHandler)
 
+var historicalHigh = 0.00;
+
 server.listen(port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
@@ -53,10 +55,15 @@ function getAPIData(request, response) {
         ausgangsSumme = ausgangsSumme + ausgangsPreis[i];
         currentSumme = currentSumme + parseFloat(data[names[i]]['lowest_price']);
     }
+    if (parseFloat(currentSumme).toFixed(2) > historicalHigh) {
+      historicalHigh = parseFloat(currentSumme).toFixed(2);
+    }
+
     responseString = responseString + "<br/>";
     responseString = responseString + "<br/>";
     responseString = responseString + "Ausgang: " + parseFloat(ausgangsSumme).toFixed(2)+ "€<br/>";
     responseString = responseString + "Aktuell: " + parseFloat(currentSumme).toFixed(2)+ "€<br/>";
+    responseString = responseString + "Historical high: " + parseFloat(historicalHigh).toFixed(2)+ "€<br/>";
     responseString = responseString + "<br/>";
     responseString = responseString + "<br/>";
 
