@@ -1,0 +1,14 @@
+{
+  "name": "steam.pubg.checker",
+  "version": "1.0.0",
+  "description": "Checks PUBG Item prices",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "muffe",
+  "license": "MIT",
+  "dependencies": {
+    "steam-market-pricing": "^1.0.4"
+  }
+}
